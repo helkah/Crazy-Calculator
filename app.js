@@ -90,7 +90,30 @@ function createRandomMathOperationLevelUltraHard(){
     var resultLeftSide = (operators[randomOperator1](randomNumber1,randomNumber2));
     var resultRightSide = (operators[randomOperator3](randomNumber3,randomNumber4));
     result = (operators[randomOperator2](resultLeftSide,resultRightSide));    
-}    
+}
+    
+ function checkGivenResult(){
+        console.log(result, givenResult);
+        if (result == givenResult){
+            console.log("wow");
+            if (level == 1){
+                createRandomMathOperation(10); 
+            }else if (level == 2){
+                createRandomMathOperation(100);
+            }else if (level == 3){
+                createRandomMathOperationLevelHard(1000);
+            }else if (level == 4){
+                createRandomMathOperationLevelSuperHard();
+            }else if (level == 5){
+                createRandomMathOperationLevelUltraHard();
+            }
+            resultInputElement.value="";
+        }else{
+            console.log("wrong");
+            resultInputElement.value="";
+            givenResult="";
+        }
+    };    
 ///////////EVENTS  
 
 for (var i=0; i<chartButtons.length; i++){
@@ -102,28 +125,20 @@ for (var i=0; i<chartButtons.length; i++){
         console.log(givenResult);
     })
 }
+    
+resultInputElement.addEventListener('keyup',function(event){
+    
+    givenResult = this.value;
+    console.log(givenResult);
+    if(event.which == 13){
+        checkGivenResult();
+    }
+        
+})    
 
 enterButton.addEventListener('click',function(){
-    console.log(result, givenResult);
-    if (result == givenResult){
-         console.log("wow");
-         if (level == 1){
-            createRandomMathOperation(10); 
-         }else if (level == 2){
-             createRandomMathOperation(100);
-         }else if (level == 3){
-             createRandomMathOperationLevelHard(1000);
-         }else if (level == 4){
-             createRandomMathOperationLevelSuperHard();
-         }else if (level == 5){
-             createRandomMathOperationLevelUltraHard();
-         }
-         resultInputElement.value="";
-    }else{
-        console.log("wrong");
-        resultInputElement.value="";
-    }
-})
+    checkGivenResult();
+});
 
 
 var radioBtns = document.querySelectorAll("[type='radio']");
