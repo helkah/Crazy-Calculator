@@ -51,9 +51,46 @@ function createRandomMathOperationLevelHard(interval){
     operationInputElement.value = randomNumber1 + randomOperator + randomNumber2;
     result = (operators[randomOperator](randomNumber1,randomNumber2));
     
+}
+    
+function createRandomNumber(interval){
+    var randomNumber = Math.floor((Math.random()*interval)+1);
+    return randomNumber;
+} 
+
+function  createRandomOperator(){
+    var randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
+    return randomOperator;   
+}  
+    
+function createRandomMathOperationLevelSuperHard(){
+    
+    var randomNumber1 = createRandomNumber(100);
+    var randomNumber2 = createRandomNumber(100);
+    var randomNumber3 = createRandomNumber(100);
+    var randomOperator1 = createRandomOperator();
+    var randomOperator2 = createRandomOperator();
+    
+    operationInputElement.value = "("+randomNumber1 + randomOperator1 + randomNumber2 +")"+ randomOperator2+randomNumber3;
+    var resultLeftSide = (operators[randomOperator1](randomNumber1,randomNumber2));
+    result = (operators[randomOperator2](resultLeftSide,randomNumber3));
+}
+    
+function createRandomMathOperationLevelUltraHard(){
+    
+    var randomNumber1 = createRandomNumber(100);
+    var randomNumber2 = createRandomNumber(100);
+    var randomNumber3 = createRandomNumber(100);
+    var randomNumber4 = createRandomNumber(100);
+    var randomOperator1 = createRandomOperator();
+    var randomOperator2 = createRandomOperator();
+    var randomOperator3 = createRandomOperator();
+    
+    operationInputElement.value = "("+randomNumber1 + randomOperator1 + randomNumber2 +")"+ randomOperator2 + "(" + randomNumber3 + randomOperator3 + randomNumber4 +")";
+    var resultLeftSide = (operators[randomOperator1](randomNumber1,randomNumber2));
+    var resultRightSide = (operators[randomOperator3](randomNumber3,randomNumber4));
+    result = (operators[randomOperator2](resultLeftSide,resultRightSide));    
 }    
-    
-    
 ///////////EVENTS  
 
 for (var i=0; i<chartButtons.length; i++){
@@ -76,6 +113,10 @@ enterButton.addEventListener('click',function(){
              createRandomMathOperation(100);
          }else if (level == 3){
              createRandomMathOperationLevelHard(1000);
+         }else if (level == 4){
+             createRandomMathOperationLevelSuperHard();
+         }else if (level == 5){
+             createRandomMathOperationLevelUltraHard();
          }
          resultInputElement.value="";
     }else{
@@ -103,6 +144,12 @@ for(var i=0; i<radioBtns.length; i++){
         }else if(this.value =="hard"){
             createRandomMathOperationLevelHard(1000);
             level = 3;
+        }else if(this.value =="superHard"){
+            createRandomMathOperationLevelSuperHard();
+            level = 4;
+        }else if(this.value="ultraHard"){
+            createRandomMathOperationLevelUltraHard();
+            level = 5;
         }
         
     })
