@@ -1,7 +1,9 @@
-#calculator,.hide{
-    display: none;
+#calculator, .hide {
+  display: none;
 }
 
-#calculator.show{
-    display: block;
+#calculator.show {
+  display: block;
 }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzIjpbIm1haW4uc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIjY2FsY3VsYXRvciwuaGlkZXtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuXHJcbiNjYWxjdWxhdG9yLnNob3d7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxufVxyXG4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsQUFBQSxXQUFXLEVBQUMsQUFBQSxLQUFLLENBQUE7RUFDYixPQUFPLEVBQUUsSUFBSTtDQUNoQjs7QUFFRCxBQUFBLFdBQVcsQUFBQSxLQUFLLENBQUE7RUFDWixPQUFPLEVBQUUsS0FBSztDQUNqQiJ9 */
