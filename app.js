@@ -2,30 +2,31 @@ document.addEventListener('DOMContentLoaded',function(){
 
 ////////////VARIABLES
     
-var operatorsArray = ["+","-","*","/"];
-var operators = {
+let operatorsArray = ["+","-","*","/"];
+let operators = {
     '+':function(a,b){return a+b},
     '-':function(a,b){return a-b},
     '*':function(a,b){return a*b},
     '/':function(a,b){return (Math.round((a/b)*100))/100},
 }
-var result = 0;   
-var givenResult = "";
+
+let result = 0;   
+let givenResult = "";
     
-var operationInputElement = document.getElementById('operation');
-var resultInputElement = document.getElementById('solution');
-var chartButtons = document.getElementsByClassName('charts');
-var enterButton = document.querySelector("[value='ENTER']");
+let operationInputElement = document.getElementById('operation');
+let resultInputElement = document.getElementById('solution');
+let chartButtons = document.getElementsByClassName('charts');
+let enterButton = document.querySelector("[value='ENTER']");
     
-var level = 0;    
+let level = 0;    
     
 function createRandomMathOperation(interval){    
     
-    var randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
-    var randomNumber1 = Math.floor((Math.random()*interval)+1);
-    var randomNumber2 = Math.floor((Math.random()*interval)+1);
-    var rest = randomNumber1%randomNumber2;
-    var helpNumber = randomNumber1 +(randomNumber2-rest);   // to make division without remainders 
+    let randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
+    let randomNumber1 = Math.floor((Math.random()*interval)+1);
+    let randomNumber2 = Math.floor((Math.random()*interval)+1);
+    let rest = randomNumber1%randomNumber2;
+    let helpNumber = randomNumber1 +(randomNumber2-rest);   // to make division without remainders 
  
          
     if (randomOperator == "/"){
@@ -44,9 +45,9 @@ function createRandomMathOperation(interval){
     
 function createRandomMathOperationLevelHard(interval){
     
-    var randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
-    var randomNumber1 = Math.floor((Math.random()*interval)+1);
-    var randomNumber2 = Math.floor((Math.random()*interval)+1);
+    let randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
+    let randomNumber1 = Math.floor((Math.random()*interval)+1);
+    let randomNumber2 = Math.floor((Math.random()*interval)+1);
     
     operationInputElement.value = randomNumber1 + randomOperator + randomNumber2;
     result = (operators[randomOperator](randomNumber1,randomNumber2));
@@ -54,41 +55,41 @@ function createRandomMathOperationLevelHard(interval){
 }
     
 function createRandomNumber(interval){
-    var randomNumber = Math.floor((Math.random()*interval)+1);
+    let randomNumber = Math.floor((Math.random()*interval)+1);
     return randomNumber;
 } 
 
 function  createRandomOperator(){
-    var randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
+    let randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
     return randomOperator;   
 }  
     
 function createRandomMathOperationLevelSuperHard(){
     
-    var randomNumber1 = createRandomNumber(100);
-    var randomNumber2 = createRandomNumber(100);
-    var randomNumber3 = createRandomNumber(100);
-    var randomOperator1 = createRandomOperator();
-    var randomOperator2 = createRandomOperator();
+    let randomNumber1 = createRandomNumber(100);
+    let randomNumber2 = createRandomNumber(100);
+    let randomNumber3 = createRandomNumber(100);
+    let randomOperator1 = createRandomOperator();
+    let randomOperator2 = createRandomOperator();
     
     operationInputElement.value = "("+randomNumber1 + randomOperator1 + randomNumber2 +")"+ randomOperator2+randomNumber3;
-    var resultLeftSide = (operators[randomOperator1](randomNumber1,randomNumber2));
+    let resultLeftSide = (operators[randomOperator1](randomNumber1,randomNumber2));
     result = (operators[randomOperator2](resultLeftSide,randomNumber3));
 }
     
 function createRandomMathOperationLevelUltraHard(){
     
-    var randomNumber1 = createRandomNumber(100);
-    var randomNumber2 = createRandomNumber(100);
-    var randomNumber3 = createRandomNumber(100);
-    var randomNumber4 = createRandomNumber(100);
-    var randomOperator1 = createRandomOperator();
-    var randomOperator2 = createRandomOperator();
-    var randomOperator3 = createRandomOperator();
+    let randomNumber1 = createRandomNumber(100);
+    let randomNumber2 = createRandomNumber(100);
+    let randomNumber3 = createRandomNumber(100);
+    let randomNumber4 = createRandomNumber(100);
+    let randomOperator1 = createRandomOperator();
+    let randomOperator2 = createRandomOperator();
+    let randomOperator3 = createRandomOperator();
     
     operationInputElement.value = "("+randomNumber1 + randomOperator1 + randomNumber2 +")"+ randomOperator2 + "(" + randomNumber3 + randomOperator3 + randomNumber4 +")";
-    var resultLeftSide = (operators[randomOperator1](randomNumber1,randomNumber2));
-    var resultRightSide = (operators[randomOperator3](randomNumber3,randomNumber4));
+    let resultLeftSide = (operators[randomOperator1](randomNumber1,randomNumber2));
+    let resultRightSide = (operators[randomOperator3](randomNumber3,randomNumber4));
     result = (operators[randomOperator2](resultLeftSide,resultRightSide));    
 }
     
@@ -116,7 +117,7 @@ function createRandomMathOperationLevelUltraHard(){
     };    
 ///////////EVENTS  
 
-for (var i=0; i<chartButtons.length; i++){
+for (let i=0; i<chartButtons.length; i++){
         
     chartButtons[i].addEventListener('click',function(){
      
@@ -141,12 +142,12 @@ enterButton.addEventListener('click',function(){
 });
 
 
-var radioBtns = document.querySelectorAll("[type='radio']");
+let radioBtns = document.querySelectorAll("[type='radio']");
 
-for(var i=0; i<radioBtns.length; i++){
+for(let i=0; i<radioBtns.length; i++){
     radioBtns[i].addEventListener('change', function(){
-        var sectionLevel = document.getElementById('level');
-        var sectionCalculator = document.getElementById('calculator');
+        let sectionLevel = document.getElementById('level');
+        let sectionCalculator = document.getElementById('calculator');
         sectionLevel.classList.add('hide');
         sectionCalculator.classList.add('show');
         
