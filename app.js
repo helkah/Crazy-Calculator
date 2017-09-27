@@ -17,10 +17,14 @@ let operationInputElement = document.getElementById('operation');
 let resultInputElement = document.getElementById('solution');
 let chartButtons = document.getElementsByClassName('charts');
 let enterButton = document.querySelector("[value='ENTER']");
+let radioBtns = document.querySelectorAll("[type='radio']");      
     
-let level = 0;    
+let level = 0;
     
-function createRandomMathOperation(interval){    
+  
+//////////FUNCTIONS    
+    
+const createRandomMathOperation = interval => {    
     
     let randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
     let randomNumber1 = Math.floor((Math.random()*interval)+1);
@@ -43,7 +47,7 @@ function createRandomMathOperation(interval){
     }    
 };
     
-function createRandomMathOperationLevelHard(interval){
+const createRandomMathOperationLevelHard = interval => {
     
     let randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
     let randomNumber1 = Math.floor((Math.random()*interval)+1);
@@ -54,17 +58,11 @@ function createRandomMathOperationLevelHard(interval){
     
 }
     
-function createRandomNumber(interval){
-    let randomNumber = Math.floor((Math.random()*interval)+1);
-    return randomNumber;
-} 
+const createRandomNumber = interval => Math.floor((Math.random()*interval)+1);
 
-function  createRandomOperator(){
-    let randomOperator = operatorsArray[Math.floor(Math.random() * operatorsArray.length)];
-    return randomOperator;   
-}  
+const createRandomOperator = () => operatorsArray[Math.floor(Math.random() * operatorsArray.length)];   
     
-function createRandomMathOperationLevelSuperHard(){
+const createRandomMathOperationLevelSuperHard = () => {
     
     let randomNumber1 = createRandomNumber(100);
     let randomNumber2 = createRandomNumber(100);
@@ -77,7 +75,7 @@ function createRandomMathOperationLevelSuperHard(){
     result = (operators[randomOperator2](resultLeftSide,randomNumber3));
 }
     
-function createRandomMathOperationLevelUltraHard(){
+const createRandomMathOperationLevelUltraHard = () => {
     
     let randomNumber1 = createRandomNumber(100);
     let randomNumber2 = createRandomNumber(100);
@@ -93,7 +91,7 @@ function createRandomMathOperationLevelUltraHard(){
     result = (operators[randomOperator2](resultLeftSide,resultRightSide));    
 }
     
- function checkGivenResult(){
+ const checkGivenResult = () => {
         console.log(result, givenResult);
         if (result == givenResult){
             console.log("wow");
@@ -141,8 +139,6 @@ enterButton.addEventListener('click',function(){
     checkGivenResult();
 });
 
-
-let radioBtns = document.querySelectorAll("[type='radio']");
 
 for(let i=0; i<radioBtns.length; i++){
     radioBtns[i].addEventListener('change', function(){
